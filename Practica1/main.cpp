@@ -4,41 +4,90 @@
 using namespace std;
 
 void menuEjercicios();
+void mostrar();
+void ejecutando();
 
 int main()
 {
-    int ejercicio;
-    string consonante;
-    string vocal;
 
+    //declaracion variables
+    int ejercicio;
+    int opcion = 1;
+
+    //menu de ejercicios
     menuEjercicios();
     cout<<"Selecciona el ejercicio: ";
     cin>>ejercicio;
+
+    //ciclo-seleccion de ejercicios
     while (ejercicio!=0) {
 
-
-
-        switch (ejercicio) {
+        switch (opcion) {
         case 1:
-            consonante= "bcdfghjklmnpqrstvwxyz";
-            vocal = "aeiou";
             char c;
-            cout<<"Identificacion de caracteres"<<endl;
-            cout<<"Ingresa el caracter a identificar (vocal-consonante-na): "<<endl;
+
+            ejecutando();
+            cout<<"Identificacion de caracter"<<endl;
+            cout<<"Ingresa el caracter a identificar: ";
             cin>>c;
-            if (consonante.find(c)){
-                cout<<c<<" es una consonante"<<endl;
-            }else if (vocal.find(c)){
-                cout<<c<<" es una vocal"<<endl;
+            if ((c>=65 && c<=90) || (c>=97 && c<=122)){
+                char vocales[]={'A','E','I','O','U'};
+                if (c>=97){
+                    c-=32;
+                    for (int i=0; i<5; i++){
+                        if (vocales[i]==c){
+                            cout<<c<<"es una vocal"<<endl;
+                        break;
+                        }else{
+                            cout<<c<<"es una consonante"<<endl;
+                            break;
+                        }
+                    }
+
+                }
             }else{
-                cout<<c<<" No es una leta"<<endl;
-            };
+                    cout<<c<<"no es una letra"<<endl;
+                    break;
+            }
         break;
         case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 8:
+            break;
+        case 9:
+            break;
+        case 10:
+            break;
+        case 11:
+            break;
+        case 12:
+            break;
+        case 13:
+            break;
+        case 14:
+            break;
+        case 15:
+            break;
+        case 16:
+            break;
+        case 17:
             break;
         default:
             break;
         }
+
+
+    return 0;
     }
 }
 
@@ -63,4 +112,11 @@ void menuEjercicios(){
     cout<<"17. "<<endl;
 
 
+}
+
+void mostrar(string texto){
+    cout<<texto<<endl;
+}
+void ejecutando(){
+    mostrar("Ejecutando ejercicio...");
 }
