@@ -65,7 +65,13 @@ int main()
         }
         break;}
     case 3:{
-
+        int mes, dia;
+        ejecutando();
+        cout<<"Validacion de combinacion de mes y dia"<<endl;
+        cout<<"Ingrese el mes: ";
+        cin>>mes;
+        cout<<endl<<"Ingrese el dia: ";
+        cin>>dia;
         }
     }
 }
