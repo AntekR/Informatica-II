@@ -83,7 +83,19 @@ int main()
         break;
         }
     case 4:{
-
+        int hora, duracion;
+        ejecutando();
+        cout<<"Suma de tiempo"<<endl;
+        cout<<"Ingrese la hora: ";
+        cin>> hora;
+        cout<<"Ingrese la duracion: ";
+        cin>> duracion;
+        int invalido = hora%100;
+        if (invalido>=60){
+            int minutos =
+        }else{
+            cout<<hora<<" es un tiempo invalido"<<endl;
+        }
         }
     }
 
