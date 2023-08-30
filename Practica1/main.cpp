@@ -66,14 +66,27 @@ int main()
         break;}
     case 3:{
         int mes, dia;
+        int meses[]={31,29,31,30,31,30,31,31,30,31,30,31};
         ejecutando();
-        cout<<"Validacion de combinacion de mes y dia"<<endl;
-        cout<<"Ingrese el mes: ";
-        cin>>mes;
+        cout<<"Validacion de combinacion de mes y dia";
         cout<<endl<<"Ingrese el dia: ";
         cin>>dia;
+        cout<<"Ingrese el mes: ";
+        cin>>mes;
+
+        if (mes>=1 && mes<=12){
+            if (dia>=1 && dia<=meses[mes-1]) cout<<dia<<"/"<<mes<<" es una fecha valida"<<endl;
+            else cout<<dia<<"/"<<mes<<" es una fecha invalida"<<endl;
+        }else{
+            cout<<mes<<" es un mes invalido"<<endl;
+        }
+        break;
+        }
+    case 4:{
+
         }
     }
+
 }
 
 
