@@ -106,6 +106,28 @@ int main()
         }
         break;
         }
+    case 5:{
+        char caracter = 42;
+        int espacio = 7;
+        ejecutando();
+        caracter = '*';
+        for (int r=1; r<=14; r+=2){
+            if (r<=7){
+                for (int e=1; e<=(espacio-r)/2; e++){
+                    cout<<' ';
+                }
+                for (int c=1; c<=r; c++){
+                    cout<<caracter;
+                }
+                for (int e=1; e<=(espacio-r)/2; e++){
+                    cout<<' ';
+                }
+                cout<<endl;
+            }
+
+        }
+        }
+    break;
     }
 
 }
@@ -117,7 +139,7 @@ void menuEjercicios(){
     cout<<"2. Combinacion de billetes"<<endl;
     cout<<"3. Combinacion de mes y dia"<<endl;
     cout<<"4. Suma de tiempo"<<endl;
-    cout<<"5. Combinacion de billetes"<<endl;
+    cout<<"5. Patron en pantalla - Rombo"<<endl;
     cout<<"6. Combinacion de mes y dia"<<endl;
     cout<<"7. "<<endl;
     cout<<"8. "<<endl;
