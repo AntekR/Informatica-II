@@ -88,14 +88,23 @@ int main()
         cout<<"Suma de tiempo"<<endl;
         cout<<"Ingrese la hora: ";
         cin>> hora;
-        cout<<"Ingrese la duracion: ";
-        cin>> duracion;
-        int invalido = hora%100;
-        if (invalido>=60){
-            int minutos =
+        int invalido_hor = hora%100;
+        if (invalido_hor<60){
+            cout<<"Ingrese la duracion: ";
+            cin>> duracion;
+            int invalido_dur = duracion%100;
+            if (invalido_dur<60){
+                int dur_min = duracion%100; cout<<dur_min<<endl;
+                int hor_min = hora%100; cout<<hor_min<<endl;
+                int res_min = (dur_min+hor_min)%60; cout<<res_min<<endl;
+                int hor = (hora/100); int hor_dur = duracion/100 ;
+                int sum_hr = hor+hor_dur+((dur_min+hor_min)/60); cout<<"La hora es: "<<sum_hr<<res_min<<endl;
+            }else{cout<<duracion<<" es una duracion invalida"<<endl;}
+
         }else{
             cout<<hora<<" es un tiempo invalido"<<endl;
         }
+        break;
         }
     }
 
@@ -107,7 +116,7 @@ void menuEjercicios(){
     cout<<"1. Identificacion de caracter"<<endl;
     cout<<"2. Combinacion de billetes"<<endl;
     cout<<"3. Combinacion de mes y dia"<<endl;
-    cout<<"4. Identificacion de caracter"<<endl;
+    cout<<"4. Suma de tiempo"<<endl;
     cout<<"5. Combinacion de billetes"<<endl;
     cout<<"6. Combinacion de mes y dia"<<endl;
     cout<<"7. "<<endl;
