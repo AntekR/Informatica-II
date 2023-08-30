@@ -11,85 +11,65 @@ int main()
 {
 
     //declaracion variables
-    int ejercicio;
+    //int ejercicio;
     int opcion = 1;
 
     //menu de ejercicios
     menuEjercicios();
     cout<<"Selecciona el ejercicio: ";
-    cin>>ejercicio;
+    cin>>opcion;
 
     //ciclo-seleccion de ejercicios
-    while (ejercicio!=0) {
 
-        switch (opcion) {
-        case 1:
-            char c;
-
-            ejecutando();
-            cout<<"Identificacion de caracter"<<endl;
-            cout<<"Ingresa el caracter a identificar: ";
-            cin>>c;
-            if ((c>=65 && c<=90) || (c>=97 && c<=122)){
-                char vocales[]={'A','E','I','O','U'};
-                if (c>=97){
-                    c-=32;
-                    for (int i=0; i<5; i++){
-                        if (vocales[i]==c){
-                            cout<<c<<"es una vocal"<<endl;
-                        break;
-                        }else{
-                            cout<<c<<"es una consonante"<<endl;
-                            break;
-                        }
-                    }
-
-                }
-            }else{
-                    cout<<c<<"no es una letra"<<endl;
+    switch(opcion){
+    case 1:{
+        char c;
+        ejecutando();
+        cout<<"Identificacion de caracter"<<endl;
+        cout<<"Ingresa el caracter a identificar: ";
+        cin>>c;
+        if ((c>=65 && c<=90) || (c>=97 && c<=122)){
+            char vocales[]={'A','E','I','O','U','a','e','i','o','u'};
+            bool vocal = true;
+            for (int i=0; i<10; i++){
+                if (vocales[i]==c){
+                    cout<<c<<" es una vocal"<<endl;
+                    vocal = true;
                     break;
+                }else{vocal=false;}
             }
-        break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 6:
-            break;
-        case 7:
-            break;
-        case 8:
-            break;
-        case 9:
-            break;
-        case 10:
-            break;
-        case 11:
-            break;
-        case 12:
-            break;
-        case 13:
-            break;
-        case 14:
-            break;
-        case 15:
-            break;
-        case 16:
-            break;
-        case 17:
-            break;
-        default:
+            if (vocal==false){
+                cout<<c<<" es una consonante"<<endl;
+            }
+        }else{
+            cout<<c<<" no es una letra"<<endl;
             break;
         }
+        break;}
+    case 2:{
+        int cantidad;
+        int valores[]={50000,20000,10000,5000,2000,1000,500,200,100,50};
+        int combinaciones[11];
+        cout<<"Ingrese la cantidad para validar la combinacion de billetes y monedas: ";
+        cin>>cantidad;
+        for (int i=0; i<10; i++){
+            combinaciones[i]= cantidad/valores[i];
+            cantidad %= valores[i];
+        }
+        for (int j=0; j<11; j++){
+            if(j==10){
+                cout<<"Faltante: "<<cantidad<<endl;
+            }else{
+                cout<<valores[j]<<": "<<combinaciones[j]<<endl;
+            }
+        }
+        break;}
+    case 3:{
 
-
-    return 0;
+        }
     }
 }
+
 
 void menuEjercicios(){
     cout<<"---Menu principal---"<<endl;
