@@ -6,6 +6,8 @@ using namespace std;
 void menuEjercicios();
 void mostrar();
 void ejecutando();
+int factorial(int n);
+int factorial_int(int n);
 
 int main()
 {
@@ -126,8 +128,22 @@ int main()
             }
 
         }
+        break;}
+    case 6:{
+        int numero;
+        float aproximacion = 0;
+        ejecutando();
+        cout<<"Aproximacion euler"<<endl;
+        cout<<"Ingresa el numero para la aproximacion: "; cin>>numero;
+        for(int j=0;j<numero;j++){
+            float f =  factorial(j);
+            float d = 1/f;
+            aproximacion += d;
+
         }
-    break;
+        cout<<"e es aproximadamente: "<<aproximacion<<endl;
+        break;}
+    case 7:{}
     }
 
 }
@@ -140,7 +156,7 @@ void menuEjercicios(){
     cout<<"3. Combinacion de mes y dia"<<endl;
     cout<<"4. Suma de tiempo"<<endl;
     cout<<"5. Patron en pantalla - Rombo"<<endl;
-    cout<<"6. Combinacion de mes y dia"<<endl;
+    cout<<"6. Aproximacion euler"<<endl;
     cout<<"7. "<<endl;
     cout<<"8. "<<endl;
     cout<<"9. "<<endl;
@@ -161,4 +177,26 @@ void mostrar(string texto){
 }
 void ejecutando(){
     mostrar("Ejecutando ejercicio...");
+}
+
+int factorial(int n){
+    int fact = n;
+    int suma = 0;
+    if (n==0){
+        suma = 1;
+    }else if (n==1){
+        n = n+1;
+        for (int i=1; i<n;i++){
+            suma+= fact*(n-1);
+            fact-= 1;
+            n-=1;
+        }
+    }else{
+        for (int i=1; i<n;i++){
+            suma+= fact*(n-1);
+            fact-= 1;
+        }
+    }
+
+    return suma;
 }
