@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <math.h>
 
 using namespace std;
 
@@ -195,9 +196,24 @@ int main()
             else cout<<"+"<<n_multiplos[p];
         }
         cout<<"="<<suma_multiplos<<endl;
+        break;
 
+    }
+    case 9:{
+        int numero;
+        int suma = 0;
+        ejecutando();
+        cout<<"Suma de digitos"<<endl;
+        cout<<"Ingres el numero: "; cin>>numero;
 
-
+        while (numero>0) {
+            int resto = numero%10;
+            numero /= 10;
+            int elevado = pow(resto,resto);
+            suma += elevado;
+        }
+        cout<<"El resultado de la suma es: "<<suma<<endl;
+        break;
     }
     }
 
@@ -214,7 +230,7 @@ void menuEjercicios(){
     cout<<"6. Aproximacion euler"<<endl;
     cout<<"7. Serie de Fibonnaci"<<endl;
     cout<<"8. Suma de multiplos"<<endl;
-    cout<<"9. "<<endl;
+    cout<<"9. Suma de digitos"<<endl;
     cout<<"10. "<<endl;
     cout<<"11. "<<endl;
     cout<<"12. "<<endl;
