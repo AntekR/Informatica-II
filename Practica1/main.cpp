@@ -4,10 +4,8 @@
 using namespace std;
 
 void menuEjercicios();
-void mostrar();
 void ejecutando();
 int factorial(int n);
-int factorial_int(int n);
 
 int main()
 {
@@ -162,6 +160,43 @@ int main()
         break;
     }
     case 8:{
+        int a, b, c;
+        ejecutando();
+        cout<<"Calculo de suma de multiplos de a y b menores a c"<<endl;
+        cout<<"Ingrese el valor de a: ";cin>>a;
+        cout<<"Ingrese el valor de b: ";cin>>b;
+        cout<<"Ingrese el valor de c: ";cin>>c;
+        int mul_a=c/a; int mul_b=c/b;
+        if (c%a==0){
+            mul_a-=1;
+            if(c%b==0){
+                mul_b-=1;
+            }
+        }else if(c%b==0 or b*5<c) {
+            mul_b-=1;
+        }
+        int cant_mul = mul_a + mul_b;
+        int n_multiplos[cant_mul];
+        int suma_multiplos = 0;
+        for (int i=1; i<=mul_a;i++){
+            int mult = a*i;
+            suma_multiplos += mult;
+            n_multiplos[i-1]=mult;
+
+        }
+        for (int j=1; j<=mul_b;j++){
+            int mult = b*j;
+            suma_multiplos += mult;
+            n_multiplos[(mul_a-1)+j]=mult;
+
+        }
+        for (int p=0;p<cant_mul;p++){
+            if (p==0)  cout<<n_multiplos[p];
+            else cout<<"+"<<n_multiplos[p];
+        }
+        cout<<"="<<suma_multiplos<<endl;
+
+
 
     }
     }
@@ -178,7 +213,7 @@ void menuEjercicios(){
     cout<<"5. Patron en pantalla - Rombo"<<endl;
     cout<<"6. Aproximacion euler"<<endl;
     cout<<"7. Serie de Fibonnaci"<<endl;
-    cout<<"8. "<<endl;
+    cout<<"8. Suma de multiplos"<<endl;
     cout<<"9. "<<endl;
     cout<<"10. "<<endl;
     cout<<"11. "<<endl;
@@ -192,11 +227,8 @@ void menuEjercicios(){
 
 }
 
-void mostrar(string texto){
-    cout<<texto<<endl;
-}
 void ejecutando(){
-    mostrar("Ejecutando ejercicio...");
+    cout<<"Ejecutando ejercicio..."<<endl;
 }
 
 int factorial(int n){
