@@ -143,7 +143,27 @@ int main()
         }
         cout<<"e es aproximadamente: "<<aproximacion<<endl;
         break;}
-    case 7:{}
+    case 7:{
+        int suma=0; int n;
+        int suma_fibonacci = 0;
+        int acumulados[]={1,1};
+        ejecutando();
+        cout<<"Serie de Fibonnaci"<<endl;
+        cout<<"Ingrese el numero a hallar la suma de los pares: "; cin>>n;
+        while (suma_fibonacci<=n) {
+            int s = acumulados[0]+acumulados[1];
+            acumulados[0]= acumulados[1]; acumulados[1]=s;
+            if (s%2==0 && s<=n) suma += s;
+
+            suma_fibonacci=s;
+
+        }
+        cout<<"El resultado de la suma es: "<<suma<<endl;
+        break;
+    }
+    case 8:{
+
+    }
     }
 
 }
@@ -157,7 +177,7 @@ void menuEjercicios(){
     cout<<"4. Suma de tiempo"<<endl;
     cout<<"5. Patron en pantalla - Rombo"<<endl;
     cout<<"6. Aproximacion euler"<<endl;
-    cout<<"7. "<<endl;
+    cout<<"7. Serie de Fibonnaci"<<endl;
     cout<<"8. "<<endl;
     cout<<"9. "<<endl;
     cout<<"10. "<<endl;
