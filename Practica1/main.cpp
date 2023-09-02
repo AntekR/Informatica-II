@@ -7,6 +7,7 @@ using namespace std;
 void menuEjercicios();
 void ejecutando();
 int factorial(int n);
+bool primo(int n);
 
 int main()
 {
@@ -215,6 +216,26 @@ int main()
         cout<<"El resultado de la suma es: "<<suma<<endl;
         break;
     }
+    case 10:{
+        int n;
+        int con=0;
+        int numero = 2;
+        ejecutando();
+        cout<<"Enesimo numero primo"<<endl;
+        cout<<"Ingresa un numero: ";cin>>n;
+
+        while (con<n) {
+            if(primo(numero)){
+                con +=1;
+                if(con==n){
+                    cout<<"El primo numero "<<n<<" es: "<<numero<<endl;
+                    break;
+                }
+            }
+            numero++;
+        }
+        break;
+    }
     }
 
 }
@@ -231,7 +252,7 @@ void menuEjercicios(){
     cout<<"7. Serie de Fibonnaci"<<endl;
     cout<<"8. Suma de multiplos"<<endl;
     cout<<"9. Suma de digitos"<<endl;
-    cout<<"10. "<<endl;
+    cout<<"10. Enesimo numero primo"<<endl;
     cout<<"11. "<<endl;
     cout<<"12. "<<endl;
     cout<<"13. "<<endl;
@@ -267,4 +288,14 @@ int factorial(int n){
     }
 
     return suma;
+}
+
+bool primo(int n){
+    if (n<=1) return false;
+    for (int i = 2; i*i <= n; i++) {
+        if(n%i==0){
+            return false;
+        }
+    }
+    return true;
 }
