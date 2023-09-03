@@ -8,6 +8,7 @@ void menuEjercicios();
 void ejecutando();
 int factorial(int n);
 bool primo(int n);
+int mcdGFC(int a, int b);
 
 int main()
 {
@@ -236,6 +237,21 @@ int main()
         }
         break;
     }
+    case 11:{
+        int n;
+        int mcm=1;
+        ejecutando();
+        cout<<"Minimo comun multiplo"<<endl;
+        cout<<"Ingrese un numero: ";
+        cin>>n;
+        for(int i=2;i<=n;i++){
+            int mcd = mcdGFC(mcm,i);
+            mcm = (mcm*i)/mcd;
+        }
+        cout<<"El minimo comun multiplo es: "<<mcm<<endl;
+
+        break;
+    }
     }
 
 }
@@ -253,7 +269,7 @@ void menuEjercicios(){
     cout<<"8. Suma de multiplos"<<endl;
     cout<<"9. Suma de digitos"<<endl;
     cout<<"10. Enesimo numero primo"<<endl;
-    cout<<"11. "<<endl;
+    cout<<"11. Minimo comun multiplo"<<endl;
     cout<<"12. "<<endl;
     cout<<"13. "<<endl;
     cout<<"14. "<<endl;
@@ -298,4 +314,11 @@ bool primo(int n){
         }
     }
     return true;
+}
+
+int mcdGFC(int a, int b){
+    if (b==0) return a;
+    else if (a==0) return b;
+
+    return mcdGFC(b,a%b);
 }
