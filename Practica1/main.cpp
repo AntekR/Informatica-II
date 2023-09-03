@@ -272,6 +272,26 @@ int main()
         cout<<"El mayor factor primo de "<<n<<" es: "<<factor<<endl;
         break;
     }
+    case 13:{
+        int n;
+        int con=0;
+        int numero = 2;
+        ejecutando();
+        cout<<"Suma numeros primos"<<endl;
+        cout<<"Ingresa un numero: ";cin>>n;
+        int factor = 0;
+        while (con<n) {
+            if(primo(numero)){
+                con +=1;
+                if (numero<n){
+                    factor += numero;
+                }
+            }
+            numero++;
+        }
+        cout<<"El resultado de la suma es: "<<factor<<endl;
+        break;
+    }
     }
 
 }
@@ -291,7 +311,7 @@ void menuEjercicios(){
     cout<<"10. Enesimo numero primo"<<endl;
     cout<<"11. Minimo comun multiplo"<<endl;
     cout<<"12. Factores primos"<<endl;
-    cout<<"13. "<<endl;
+    cout<<"13. Suma de numeros primos"<<endl;
     cout<<"14. "<<endl;
     cout<<"15. "<<endl;
     cout<<"16. "<<endl;
