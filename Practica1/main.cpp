@@ -252,6 +252,26 @@ int main()
 
         break;
     }
+    case 12:{
+        int n;
+        int con=0;
+        int numero = 2;
+        ejecutando();
+        cout<<"Factores primos"<<endl;
+        cout<<"Ingresa un numero: ";cin>>n;
+        int factor = 0;
+        while (con<n) {
+            if(primo(numero)){
+                con +=1;
+                if(n%numero==0){
+                    factor = numero;
+                }
+            }
+            numero++;
+        }
+        cout<<"El mayor factor primo de "<<n<<" es: "<<factor<<endl;
+        break;
+    }
     }
 
 }
@@ -270,7 +290,7 @@ void menuEjercicios(){
     cout<<"9. Suma de digitos"<<endl;
     cout<<"10. Enesimo numero primo"<<endl;
     cout<<"11. Minimo comun multiplo"<<endl;
-    cout<<"12. "<<endl;
+    cout<<"12. Factores primos"<<endl;
     cout<<"13. "<<endl;
     cout<<"14. "<<endl;
     cout<<"15. "<<endl;
@@ -318,7 +338,6 @@ bool primo(int n){
 
 int mcdGFC(int a, int b){
     if (b==0) return a;
-    else if (a==0) return b;
 
     return mcdGFC(b,a%b);
 }
