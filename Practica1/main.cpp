@@ -292,6 +292,30 @@ int main()
         cout<<"El resultado de la suma es: "<<factor<<endl;
         break;
     }
+    case 17:{
+        int divisores=0; int numero=1;
+        int n_triangular = 0; int n;
+        ejecutando();
+        cout<<"Secuencia triangular"<<endl;
+        cout<<"Ingrese un numero de divisores: ";cin>>n;
+
+
+        while (n>=divisores) {
+
+            int num = (numero*(numero+1))/2;
+            int div_temporal = 0;
+            for (int i = 1; i <= num; ++i) {
+                if(num%i==0) div_temporal+=1;
+            }
+            numero++;
+            if(div_temporal>divisores){
+                n_triangular=num;
+                divisores= div_temporal;
+            }
+        }
+        cout<<"El numero es: "<<n_triangular<<" que tiene "<<divisores<<"."<<endl;
+        break;
+    }
     }
 
 }
@@ -315,7 +339,7 @@ void menuEjercicios(){
     cout<<"14. "<<endl;
     cout<<"15. "<<endl;
     cout<<"16. "<<endl;
-    cout<<"17. "<<endl;
+    cout<<"17. Secuencia triangular"<<endl;
 
 
 }
