@@ -292,6 +292,57 @@ int main()
         cout<<"El resultado de la suma es: "<<factor<<endl;
         break;
     }
+    case 15:{
+        int n;
+        ejecutando();
+        cout<<"Espiral n*n"<<endl;
+        bool impar = false;
+        while(impar==false){
+            cout<<"Ingrese un numero n impar: ";cin>>n;
+            if(n%2!=0) impar=true;
+            else cout<<"El numero no es impar"<<endl;
+        }
+        int sum_diagonal=1; int incremento=2;
+        int ciclos = (n-1)/2; int cont = 1;
+        for (int i=0;i<ciclos;i++){
+            for (int j = 0; j < 4; ++j) {
+                cont+=incremento;
+                sum_diagonal+=cont;
+            }
+            incremento+=2;
+        }
+
+        cout<<"En una espiral 5x5, la suma es: "<<sum_diagonal<<"."<<endl;
+
+        break;
+    }
+    case 16:{
+        int m=0; int semilla=0;
+        int k;
+        cout<<"Serie de Collatz"<<endl;
+        cout<<"Ingresa un numero: ";cin>>k;
+
+        for(int i=1;i<k;i++){
+            int m_temp=0; int sem_temp=i;
+            int con=i;
+
+            while(con!=1){
+
+                if(con%2==0) {
+                    con/=2; m_temp+=1;
+                }else if(con%2!=0){
+                    con= 3*con+1; m_temp+=1;
+                }else if(con==1) break;
+            }
+
+            if (m_temp>m){
+                m=m_temp; semilla=sem_temp;
+            }
+        }
+
+        cout<<"La seria mas larga es con la semilla: "<<semilla<<", teniendo "<<m<<" terminos."<<endl;
+        break;
+    }
     case 17:{
         int divisores=0; int numero=1;
         int n_triangular = 0; int n;
@@ -337,8 +388,8 @@ void menuEjercicios(){
     cout<<"12. Factores primos"<<endl;
     cout<<"13. Suma de numeros primos"<<endl;
     cout<<"14. "<<endl;
-    cout<<"15. "<<endl;
-    cout<<"16. "<<endl;
+    cout<<"15. Espiral n"<<endl;
+    cout<<"16. Secuencia Collatz"<<endl;
     cout<<"17. Secuencia triangular"<<endl;
 
 
