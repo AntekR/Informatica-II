@@ -9,6 +9,7 @@ void ejecutando();
 int factorial(int n);
 bool primo(int n);
 int mcdGFC(int a, int b);
+bool palindromo(int numero);
 
 int main()
 {
@@ -292,6 +293,23 @@ int main()
         cout<<"El resultado de la suma es: "<<factor<<endl;
         break;
     }
+    case 14:{
+        int palindromoGrande=0; int x=0; int y=0;
+        ejecutando();
+        cout<<"Palindromo mas grande"<<endl;
+        for (int i = 100; i <= 999; ++i) {
+            for (int j = 100; j <= 999; ++j) {
+                int producto=i*j;
+                if(producto<=palindromoGrande) break;
+                if(palindromo(producto)) {
+                    palindromoGrande=producto;
+                    x=i; y=j;
+                }
+            }
+        }
+        cout<<x<<"*"<<y<<"="<<palindromoGrande<<endl;
+        break;
+    }
     case 15:{
         int n;
         ejecutando();
@@ -387,7 +405,7 @@ void menuEjercicios(){
     cout<<"11. Minimo comun multiplo"<<endl;
     cout<<"12. Factores primos"<<endl;
     cout<<"13. Suma de numeros primos"<<endl;
-    cout<<"14. "<<endl;
+    cout<<"14. Palindromo mas grande"<<endl;
     cout<<"15. Espiral n"<<endl;
     cout<<"16. Secuencia Collatz"<<endl;
     cout<<"17. Secuencia triangular"<<endl;
@@ -435,4 +453,17 @@ int mcdGFC(int a, int b){
     if (b==0) return a;
 
     return mcdGFC(b,a%b);
+}
+bool palindromo(int numero){
+    int original = numero;
+    int inverso = 0;
+
+    while (numero>0){
+        int resto = numero%10;
+        inverso = inverso*10+resto;
+        numero/=10;
+    }
+
+    return original==inverso;
+
 }
