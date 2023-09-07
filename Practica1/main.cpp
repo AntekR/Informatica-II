@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
-#include <math.h>
+
+
 
 using namespace std;
 
@@ -10,6 +10,7 @@ int factorial(int n);
 bool primo(int n);
 int mcdGFC(int a, int b);
 bool palindromo(int numero);
+int pow(int a, int b);
 
 int main()
 {
@@ -466,4 +467,12 @@ bool palindromo(int numero){
 
     return original==inverso;
 
+}
+
+int pow(int a, int b){
+    int resultado=1;
+    for (int i=0;i<b;i++){
+        resultado*=a;
+    }
+    return resultado;
 }
