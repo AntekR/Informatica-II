@@ -1,9 +1,7 @@
 #include <iostream>
-
+#include <decl_funciones.h>
 using namespace std;
 
-void menuEjercicios();
-void ejecutando();
 
 int main()
 {
@@ -14,11 +12,11 @@ int main()
     //impresion de menu
     menuEjercicios();
 
-    //solicitud de datos
-    cout<<"Selecciona el ejercicio a ejecutar: "; cin>>opcion;
 
     //ciclo de ejercicios
     while (con!=0){
+        //solicitud de datos
+        cout<<"Selecciona el ejercicio a ejecutar: "; cin>>opcion;
         switch (opcion) {
         case 1:{
             int cantidad;
@@ -40,10 +38,28 @@ int main()
                 }
             }
             break;}
-        case 2:{}
-        case 3:{}
+        case 2:{
+
+            break;
+        }
+        case 3:{
+            char cadUno[20]; char cadDos[20];
+            ejecutando();
+            cout<<"Comparacion de cadenas"<<endl;
+            cout<<"Ingrese la primera cadena: ";cin>>cadUno;
+            cout<<"Ingrese la segunda cadena: ";cin>>cadDos;
+            bool comparacion = comparison(cadUno,cadDos);
+            cout<<"Las cadenas "<<cadUno<<" y "<<cadDos<<" son iguales?: ";
+            if(comparacion==1) cout<<"Verdadero"<<endl;
+            else cout<<"Falso"<<endl;
+            con = submenu();
+        break;
+        }
         case 4:{}
-        case 5:{}
+        case 5:{
+
+        break;
+        }
         case 6:{}
         case 7:{}
         case 8:{}
@@ -63,29 +79,4 @@ int main()
     }
 
     return 0;
-}
-
-void menuEjercicios(){
-    cout<<"---Menu principal---"<<endl;
-    cout<<"1. Combinacion de billetes"<<endl;
-    cout<<"2. "<<endl;
-    cout<<"3. "<<endl;
-    cout<<"4. "<<endl;
-    cout<<"5. "<<endl;
-    cout<<"6. "<<endl;
-    cout<<"7. "<<endl;
-    cout<<"8. "<<endl;
-    cout<<"9. "<<endl;
-    cout<<"10. "<<endl;
-    cout<<"11. "<<endl;
-    cout<<"12. "<<endl;
-    cout<<"13. "<<endl;
-    cout<<"14. "<<endl;
-    cout<<"15. "<<endl;
-    cout<<"16. "<<endl;
-    cout<<"17. "<<endl;
-
-}
-void ejecutando(){
-    cout<<"Ejecutando ejercicio..."<<endl;
 }
