@@ -53,12 +53,20 @@ int main()
             if(comparacion==1) cout<<"Verdadero"<<endl;
             else cout<<"Falso"<<endl;
             con = submenu();
-        break;
+            break;
         }
         case 4:{}
         case 5:{
-
-        break;
+            int numero;
+            ejecutando();
+            cout<<"De numero a cadena"<<endl;
+            cout<<"Ingrese el numero a convertir: ";cin>>numero;
+            int longEntero = longInt(numero); if(numero<0) longEntero+=1;
+            char cadena[longEntero]; int l;
+            numAcad(numero,cadena,longEntero);
+            cout<<cadena<<endl;
+            con = submenu();
+            break;
         }
         case 6:{}
         case 7:{}
@@ -74,6 +82,7 @@ int main()
         case 17:{}
 
         default:
+            if (opcion==0) con = 0;
             break;
         }
     }

@@ -8,8 +8,8 @@ void menuEjercicios(){
     cout<<"1. Combinacion de billetes"<<endl;
     cout<<"2. Repeticion aleartoria"<<endl;
     cout<<"3. Comparacion de cadenas"<<endl;
-    cout<<"4. "<<endl;
-    cout<<"5. "<<endl;
+    cout<<"4. De cadena a numero"<<endl;
+    cout<<"5. De numero a cadena"<<endl;
     cout<<"6. "<<endl;
     cout<<"7. "<<endl;
     cout<<"8. "<<endl;
@@ -22,6 +22,7 @@ void menuEjercicios(){
     cout<<"15. "<<endl;
     cout<<"16. "<<endl;
     cout<<"17. "<<endl;
+    cout<<"0. Salir"<<endl;
 
 }
 int submenu(){
@@ -44,6 +45,17 @@ int longitud(char cadena[]){
     return length;
 }
 
+int longInt(int numero){
+    int longitud=0;
+    int con=numero;
+    while (con!=0){
+        numero=numero/10;
+        con = numero;
+        longitud++;
+    }
+    return longitud;
+}
+
 bool comparison(char a[], char b[]){
     int longUno=longitud(a); int longDos=longitud(b);
     if (longUno!=longDos) return false;
@@ -56,6 +68,31 @@ bool comparison(char a[], char b[]){
     return true;
 }
 
+void numAcad(int numero, char cadena[],int longEntero){
+    int n=0;
+    char cadenaReverse[longEntero];
+    if(numero==0) cadenaReverse[n++]='0';
+    else{
+        if(numero<0){
+            //Se agrega el guión para el numero negativo y se convierte el numero a positivo para facilitar la conversion
+            cadenaReverse[longEntero-1]='-';
+            numero = -numero;
+        }
+        while(numero>0){
+            int digito = numero%10;
+            cadenaReverse[n++]='0'+digito;
+            numero /= 10;
+        }
+
+    }
+    int l = 0;
+    while (longEntero>0){
+        cadena[l]=cadenaReverse[longEntero-1];
+        l +=1;
+        longEntero-=1;
+    }
+
+};
 void quitar(char cadena[],char newCadena[]){
 
     int j = 0;
