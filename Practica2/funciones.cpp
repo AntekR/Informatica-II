@@ -10,8 +10,8 @@ void menuEjercicios(){
     cout<<"3. Comparacion de cadenas"<<endl;
     cout<<"4. De cadena a numero"<<endl;
     cout<<"5. De numero a cadena"<<endl;
-    cout<<"6. "<<endl;
-    cout<<"7. "<<endl;
+    cout<<"6. Eliminar caracteres repetidos"<<endl;
+    cout<<"7. Eliminar caracteres repetidos"<<endl;
     cout<<"8. "<<endl;
     cout<<"9. "<<endl;
     cout<<"10. "<<endl;
@@ -93,6 +93,31 @@ void numAcad(int numero, char cadena[],int longEntero){
     }
 
 };
+
+void delRepetido(char cadena[], int l){
+    char cadSinRep[l];
+    int log = 0;
+    int l1=0;
+    while(cadena[log]!='\0'){
+        if(log==0) cadSinRep[l1++]=cadena[log++];
+        else{
+            char a=cadSinRep[l1-1]; char b= cadena[log++];
+            if(a!=b){
+                bool rep=false;
+                for(int i=0;i<l;i++){
+                    if(b==cadSinRep[i]){
+                        rep=true;
+                    }
+                }
+                if(rep==false)
+                    cadSinRep[l1++]=b;
+            }
+        }
+    }
+
+    cout<<"Original: "<<cadena;cout<<". Sin repetidos: "<<cadSinRep<<endl;
+
+}
 void quitar(char cadena[],char newCadena[]){
 
     int j = 0;

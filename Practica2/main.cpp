@@ -62,14 +62,23 @@ int main()
             cout<<"De numero a cadena"<<endl;
             cout<<"Ingrese el numero a convertir: ";cin>>numero;
             int longEntero = longInt(numero); if(numero<0) longEntero+=1;
-            char cadena[longEntero]; int l;
+            char cadena[longEntero];// int l
             numAcad(numero,cadena,longEntero);
             cout<<cadena<<endl;
             con = submenu();
             break;
         }
         case 6:{}
-        case 7:{}
+        case 7:{
+            char cadena[20];
+            ejecutando();
+            cout<<"Eliminar caracteres repetidos"<<endl;
+            cout<<"Ingresa la cadena: ";cin>>cadena;
+            int longCadena = longitud(cadena);
+            delRepetido(cadena,longCadena);
+            submenu();
+            break;
+        }
         case 8:{}
         case 9:{}
         case 10:{}
