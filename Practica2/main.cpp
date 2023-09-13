@@ -80,7 +80,17 @@ int main()
             break;
         }
         case 8:{}
-        case 9:{}
+        case 9:{
+            int numero, n;
+            ejecutando();
+            cout<<"Suma de un numero divido en n cifras"<<endl;
+            cout<<"Ingrese el numero de cifras: ";cin>>n;
+            cout<<"Ingrese el numero: ";cin>>numero;
+            cout<<"Original: "<<numero<<endl;
+            cout<<"Suma: "<<sumaDen(numero,n)<<endl;
+            submenu();
+            break;
+        }
         case 10:{}
         case 11:{}
         case 12:{}

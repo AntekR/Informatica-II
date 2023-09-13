@@ -118,6 +118,18 @@ void delRepetido(char cadena[], int l){
     cout<<"Original: "<<cadena;cout<<". Sin repetidos: "<<cadSinRep<<endl;
 
 }
+
+int sumaDen(int numero, int n){
+    int div = 1; for(int i=0; i<n;i++) div*=10;
+    int suma=0;
+    while(numero>0){
+        suma += numero%div;
+        numero/=div;
+    }
+
+    return suma;
+}
+
 void quitar(char cadena[],char newCadena[]){
 
     int j = 0;
