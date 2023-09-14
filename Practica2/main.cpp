@@ -92,7 +92,23 @@ int main()
             break;
         }
         case 10:{}
-        case 11:{}
+        case 11:{
+            char sala[15][20];
+
+            //Relleno de los asientos
+            for(int i=0; i<15;i++){
+                for(int j=0; j<20; j++){
+                    sala[i][j]='-';
+                }
+            }
+
+            ejecutando();
+            cout<<"Reserva de asiento en Cine"<<endl;
+
+            salaCine(sala);
+
+            break;
+        }
         case 12:{}
         case 13:{}
         case 14:{}

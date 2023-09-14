@@ -10,12 +10,12 @@ void menuEjercicios(){
     cout<<"3. Comparacion de cadenas"<<endl;
     cout<<"4. De cadena a numero"<<endl;
     cout<<"5. De numero a cadena"<<endl;
-    cout<<"6. Eliminar caracteres repetidos"<<endl;
+    cout<<"6. Minisculas a Mayusculas"<<endl;
     cout<<"7. Eliminar caracteres repetidos"<<endl;
     cout<<"8. "<<endl;
-    cout<<"9. "<<endl;
+    cout<<"9. Suma de los digitos n de un entero"<<endl;
     cout<<"10. "<<endl;
-    cout<<"11. "<<endl;
+    cout<<"11. Reserva de asiento en Cine"<<endl;
     cout<<"12. "<<endl;
     cout<<"13. "<<endl;
     cout<<"14. "<<endl;
@@ -43,6 +43,15 @@ int longitud(char cadena[]){
         length+=1;
     }
     return length;
+}
+
+void printArreglo(char (*arreglo)[20], int m, int n){
+    for(int i=0; i<m;i++){
+        for(int j=0; j<n; j++){
+            cout<<arreglo[i][j]<<' ';
+        }
+        cout<<endl;
+    }
 }
 
 int longInt(int numero){
@@ -130,6 +139,39 @@ int sumaDen(int numero, int n){
     return suma;
 }
 
+void salaCine(char (*arreglo)[20]){
+    int asiento, opcion, filaInt; char fila;
+    char con = 'y';
+    while (con!='x') {
+        cout<<"Menu"<<endl<<"1. Deseas reservar"<<endl<<"2. Cancelar reserva "<<endl;cin>>opcion;
+        if(opcion==1){
+            cout<<"En la siguiente imagen vera la sala, recuerda que - es disponible y + reservada"<<endl;
+            printArreglo(arreglo,15,20);
+            //Se le pide fila y asiento a reservar
+            cout<<"Que fila seleccionas (A-O): ";cin>>fila;
+            cout<<"Que asiento seleccionas (1-20): ";cin>>asiento;
+            //conversion de fila letra a numero
+            filaInt = 15-('O'-fila)-1;
+            if(arreglo[filaInt][asiento-1]=='-') arreglo[filaInt][asiento-1]='+';cout<<"Su reservacion fue exitosa"<<endl;
+
+            cout<<"Deseas volver al menu anterior o salir del programa (y-menu anterior) o (x-salir): ";cin>>con;
+        }else if(opcion==2){
+
+            printArreglo(arreglo,15,20);
+            cout<<"Cancelacion de reserva"<<endl;
+            cout<<"Que fila seleccionas (A-O): ";cin>>fila;
+            cout<<"Que asiento seleccionas (1-20): ";cin>>asiento;
+            filaInt = 15-('O'-fila)-1;
+            if(arreglo[filaInt][asiento-1]=='+') {
+                arreglo[filaInt][asiento-1]='-'; cout<<"Cancelacion exitosa"<<endl;
+            }
+            else cout<<"Asiento sin reservar, cancelacion invalida"<<endl;
+
+            cout<<"Deseas volver al menu anterior o salir del programa (y-menu anterior) o (x-salir): ";cin>>con;
+        }
+
+    }
+}
 void quitar(char cadena[],char newCadena[]){
 
     int j = 0;

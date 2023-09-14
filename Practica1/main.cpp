@@ -208,7 +208,7 @@ int main()
         int suma = 0;
         ejecutando();
         cout<<"Suma de digitos"<<endl;
-        cout<<"Ingres el numero: "; cin>>numero;
+        cout<<"Ingrese el numero: "; cin>>numero;
 
         while (numero>0) {
             int resto = numero%10;
@@ -331,7 +331,7 @@ int main()
             incremento+=2;
         }
 
-        cout<<"En una espiral 5x5, la suma es: "<<sum_diagonal<<"."<<endl;
+        cout<<"En una espiral"<<n<<"*"<<n<<", la suma es: "<<sum_diagonal<<"."<<endl;
 
         break;
     }
