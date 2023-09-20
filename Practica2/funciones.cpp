@@ -1,8 +1,10 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include <decl_funciones.h>
 
 using namespace std;
-
+//Funciones complementarias
 void menuEjercicios(){
     cout<<"---Menu principal---"<<endl;
     cout<<"1. Combinacion de billetes"<<endl;
@@ -12,31 +14,31 @@ void menuEjercicios(){
     cout<<"5. De numero a cadena"<<endl;
     cout<<"6. Minisculas a Mayusculas"<<endl;
     cout<<"7. Eliminar caracteres repetidos"<<endl;
-    cout<<"8. "<<endl;
+    cout<<"8. Separacion de numeros en una cadena"<<endl;
     cout<<"9. Suma de los digitos n de un entero"<<endl;
-    cout<<"10. "<<endl;
+    cout<<"10. De romano a Arabigo"<<endl;
     cout<<"11. Reserva de asiento en Cine"<<endl;
-    cout<<"12. "<<endl;
-    cout<<"13. "<<endl;
-    cout<<"14. "<<endl;
-    cout<<"15. "<<endl;
-    cout<<"16. "<<endl;
-    cout<<"17. "<<endl;
+    cout<<"12. Es cuadro magico?"<<endl;
+    cout<<"13. Numero de estrellas"<<endl;
+    cout<<"14. Imprimir matriz rotada"<<endl;
+    cout<<"15. Interseccion de rectangulos"<<endl;
+    cout<<"16. Caminos posibles"<<endl;
+    cout<<"17. Numeros amigables"<<endl;
     cout<<"0. Salir"<<endl;
 
 }
 int submenu(){
-    int con=0;
+    int con=1;
     cout<<"Deseas volver al menu o salir definitivamente del programa"<<endl;
     cout<<"0. Salir"<<endl;
     cout<<"1. Volver al menu"<<endl;
     cout<<"Que eliges?: ";cin>>con;
+    cout<<endl;
     return con;
 }
 void ejecutando(){
-    cout<<"Ejecutando ejercicio..."<<endl;
+    cout<<endl<<"Ejecutando ejercicio..."<<endl<<endl;
 }
-
 int longitud(char cadena[]){
     int length=0;
     while(cadena[length]!='\0'){
@@ -44,7 +46,6 @@ int longitud(char cadena[]){
     }
     return length;
 }
-
 void printArreglo(char (*arreglo)[20], int m, int n){
     for(int i=0; i<m;i++){
         for(int j=0; j<n; j++){
@@ -53,18 +54,61 @@ void printArreglo(char (*arreglo)[20], int m, int n){
         cout<<endl;
     }
 }
-
 int longInt(int numero){
     int longitud=0;
     int con=numero;
-    while (con!=0){
+    if(numero==0) longitud++;
+    else{
+        while (con!=0){
         numero=numero/10;
         con = numero;
         longitud++;
+        }
     }
     return longitud;
 }
+//Funcione de cada ejercicios
 
+//Ejercicio 1
+void combinaciones(int cantidad){
+    int valores[]={50000,20000,10000,5000,2000,1000,500,200,100,50};
+    int combinaciones[11]; //guarda {50000= , 20000= , }
+
+    for (int i=0;i<10; i++){
+        combinaciones[i]= cantidad/valores[i];
+        cantidad %= valores[i];
+    }
+    for (int j=0; j<11; j++){
+        if(j==10){
+        cout<<"Faltante: "<<cantidad<<endl;
+        }else{
+        cout<<valores[j]<<": "<<combinaciones[j]<<endl;
+        }
+    }
+
+}
+
+//Ejercicio 2
+void letrasAleartorias(){
+    srand(time(NULL));
+    char arreglo[200];
+
+    for (int i = 0; i < 200; i++) {
+        arreglo[i]='A'+rand()%26;
+    }
+    for (int i = 0; i < 200; i++) {
+        cout<<arreglo[i];
+    }
+    cout<<endl;
+    int rep[26]={0};
+    for (int i = 0; i < 200; i++){
+        if (arreglo[i] >= 'A' && arreglo[i] <= 'Z'){
+        rep[arreglo[i] - 'A']++;
+        }
+    }
+    for (char letra = 'A'; letra <= 'Z'; letra++) cout<<letra<<": "<<rep[letra - 'A']<<endl;
+}
+//Ejercicio 3
 bool comparison(char a[], char b[]){
     int longUno=longitud(a); int longDos=longitud(b);
     if (longUno!=longDos) return false;
@@ -77,10 +121,10 @@ bool comparison(char a[], char b[]){
     return true;
 }
 
-void numAcad(int numero, char cadena[],int longEntero){
+void numAcad(int numero, char cadena[],int longEntero, int *l){
     int n=0;
     char cadenaReverse[longEntero];
-    if(numero==0) cadenaReverse[n++]='0';
+    if(numero==0) cadenaReverse[n]='0';
     else{
         if(numero<0){
             //Se agrega el guión para el numero negativo y se convierte el numero a positivo para facilitar la conversion
@@ -94,12 +138,16 @@ void numAcad(int numero, char cadena[],int longEntero){
         }
 
     }
-    int l = 0;
-    while (longEntero>0){
-        cadena[l]=cadenaReverse[longEntero-1];
-        l +=1;
-        longEntero-=1;
-    }
+    /*int l = 0;
+    if(numero==0) cadena[l]={'0'};
+    else{
+        while (longEntero>0){
+            cadena[l]=cadenaReverse[longEntero-1];
+            l +=1;
+            longEntero-=1;
+        }
+
+    }*/
 
 };
 
@@ -172,6 +220,23 @@ void salaCine(char (*arreglo)[20]){
 
     }
 }
+
+int estrellas(int (*imagen)[8], const int fila, const int columna){
+    int starsFound=0;
+    for (int i = 1; i < fila-1; ++i) {
+        for (int j = 1; j < columna-1; ++j) {
+            int sumaFormula = imagen[i][j]+imagen[i][j-1]+imagen[i][j+1]+imagen[i-1][j]+imagen[i+1][j];
+            double is_star = sumaFormula/5;
+            if(is_star>6) starsFound++;
+        }
+    }
+    return starsFound;
+}
+
+void interseccionTr(int arreglo[4], int arreglo1[4], int (*arregloI)[4]){
+
+}
+
 void quitar(char cadena[],char newCadena[]){
 
     int j = 0;
