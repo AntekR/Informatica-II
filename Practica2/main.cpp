@@ -1,4 +1,5 @@
 #include <iostream>
+#include <typeinfo>
 #include <decl_funciones.h>
 
 using namespace std;
@@ -41,41 +42,90 @@ int main()
         case 3:{
             char cadUno[20]; char cadDos[20];
             ejecutando();
+
             cout<<"Comparacion de cadenas"<<endl;
             cout<<"Ingrese la primera cadena: ";cin>>cadUno;
             cout<<"Ingrese la segunda cadena: ";cin>>cadDos;
+
             bool comparacion = comparison(cadUno,cadDos);
             cout<<"Las cadenas "<<cadUno<<" y "<<cadDos<<" son iguales?: ";
             if(comparacion==1) cout<<"Verdadero"<<endl;
-            else cout<<"Falso"<<endl;
-            con = submenu();
-            break;
-        }
-        case 4:{}
-        case 5:{
-            int numero;
-            ejecutando();
-            cout<<"De numero a cadena"<<endl;
-            cout<<"Ingrese el numero a convertir: ";cin>>numero;
-            int longEntero = longInt(numero); if(numero<0) longEntero+=1;
-            char cadena[longEntero]; int l;
-            //numAcad(numero,cadena,longEntero,l);
-            cout<<cadena<<endl;
-            con = submenu();
-            break;
-        }
-        case 6:{}
-        case 7:{
-            char cadena[20];
-            ejecutando();
-            cout<<"Eliminar caracteres repetidos"<<endl;
-            cout<<"Ingresa la cadena: ";cin>>cadena;
-            int longCadena = longitud(cadena);
-            delRepetido(cadena,longCadena);
+            else cout<<"Falso"<<endl<<endl;
+
             submenu();
             break;
         }
-        case 8:{}
+        case 4:{
+            char cadena[20];
+            ejecutando();
+
+            cout<<"De cadena a Numero"<<endl;
+            cout<<"Ingrese la cadena a convertir: ";cin>>cadena;
+
+            cout<<"El tipo de dato de "<<cadenaAentero(cadena)<<" es: "<<typeid(cadenaAentero(cadena)).name()<<endl;
+            submenu();
+            break;
+        }
+        case 5:{
+            int numero;
+            ejecutando();
+
+            cout<<"De numero a cadena"<<endl;
+            cout<<"Ingrese el numero a convertir: ";cin>>numero;
+
+            // recorro el entero para saber cuantos digitos tiene
+            int lInt = longInt(numero); if(numero<0) lInt+=1; // Si el numero es negativo, sumo un digito mas para add el menos.
+            char cadena[lInt];
+            numAcad(numero,cadena,lInt);
+            cout<<"El numero "<<numero<<" fue exitosamente convertido a cadena."<<endl;
+
+            submenu();
+            break;
+        }
+        case 6:{
+            char cadena[20];
+            ejecutando();
+
+            cout<<"Convertir a Mayusculas"<<endl;
+            cout<<"Ingrese la cadena a convertir: ";cin>>cadena;
+
+            int l=longitud(cadena);
+            char cadenaOri[l];
+            convertirAmay(cadena, cadenaOri);
+
+            cout<<"Original: "<<cadenaOri<<" En mayuscula: "<<cadena<<endl<<endl;
+            submenu();
+            break;
+        }
+        case 7:{
+            char cadena[20];
+            ejecutando();
+
+            cout<<"Eliminar caracteres repetidos"<<endl;
+            cout<<"Ingresa la cadena: ";cin>>cadena;
+
+            int longCadena = longitud(cadena);
+            delRepetido(cadena,longCadena);
+
+            submenu();
+            break;
+        }
+        case 8:{
+            char cadena[20];
+            ejecutando();
+
+            cout<<"Separacion de cadena y numero"<<endl;
+            cout<<"Ingrese la cadena a separar: ";cin>>cadena;
+
+            int lg = longitud(cadena);
+            char cadenaNew[lg]; char numeros[lg];
+
+            separarLyN(cadena,cadenaNew,numeros);
+
+            cout<<"Original: "<<cadena<<endl;
+            cout<<"Texto: "<<cadenaNew<<".    Numero: "<<numeros<<endl;
+            break;
+        }
         case 9:{
             int numero, n;
             ejecutando();
@@ -87,7 +137,10 @@ int main()
             submenu();
             break;
         }
-        case 10:{}
+        case 10:{
+
+            break;
+        }
         case 11:{
             char sala[15][20];
 

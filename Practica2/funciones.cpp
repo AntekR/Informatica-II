@@ -94,7 +94,7 @@ void letrasAleartorias(){
     char arreglo[200];
 
     for (int i = 0; i < 200; i++) {
-        arreglo[i]='A'+rand()%26;
+        arreglo[i]='A'+rand()%26; //rellena el arreglo con las letras, el 26 porque la diferencia entre A Y Z es eso
     }
     for (int i = 0; i < 200; i++) {
         cout<<arreglo[i];
@@ -108,6 +108,7 @@ void letrasAleartorias(){
     }
     for (char letra = 'A'; letra <= 'Z'; letra++) cout<<letra<<": "<<rep[letra - 'A']<<endl;
 }
+
 //Ejercicio 3
 bool comparison(char a[], char b[]){
     int longUno=longitud(a); int longDos=longitud(b);
@@ -121,47 +122,58 @@ bool comparison(char a[], char b[]){
     return true;
 }
 
-void numAcad(int numero, char cadena[],int longEntero, int *l){
-    int n=0;
-    char cadenaReverse[longEntero];
-    if(numero==0) cadenaReverse[n]='0';
-    else{
-        if(numero<0){
-            //Se agrega el guión para el numero negativo y se convierte el numero a positivo para facilitar la conversion
-            cadenaReverse[longEntero-1]='-';
-            numero = -numero;
-        }
-        while(numero>0){
-            int digito = numero%10;
-            cadenaReverse[n++]='0'+digito;
-            numero /= 10;
-        }
-
+//Ejercicio 4
+int cadenaAentero(char cadena[]){
+    int numero = 0;
+    for (int i = 0; cadena[i] != '\0'; i++)
+    {
+        int valor = cadena[i] - '0';
+        numero = numero * 10 + valor;
     }
-    /*int l = 0;
-    if(numero==0) cadena[l]={'0'};
-    else{
-        while (longEntero>0){
-            cadena[l]=cadenaReverse[longEntero-1];
-            l +=1;
-            longEntero-=1;
-        }
+    return numero;
+}
 
-    }*/
+//Ejercicio 5
+void numAcad(int numero, char cadena[], int l){
+    if(numero<0) l+=1;
+    if(numero==0) cadena[0]='0';
 
+    for(int i=0; i<l;i++){
+        cadena[i]= '0'+numero%10;
+        numero/=10;
+    }
 };
 
+//Ejercicio 6
+void convertirAmay(char cadena[], char cadenaNew[]){
+    int i = 0;
+    for (; cadena[i] != '\0'; i++) {
+        cadenaNew[i]=cadena[i];
+        if (cadena[i] >= 'a' && cadena[i] <= 'z'){
+            cadena[i] = cadena[i] - 'a' + 'A';
+        }
+    }
+    cadenaNew[i]='\0';
+
+}
+
+//Ejercicio 7
 void delRepetido(char cadena[], int l){
-    char cadSinRep[l];
-    int log = 0;
-    int l1=0;
+    char cadSinRep[l]; int l1=0; //contador para cadena nueva
+    int log = 0; //contador para cadena ingresada
+
     while(cadena[log]!='\0'){
-        if(log==0) cadSinRep[l1++]=cadena[log++];
+        if(log==0) {
+            char a=cadena[log++];
+            if ('A'<a && a<'Z') a = a+' '; // validacion si es mayuscula
+            cadSinRep[l1++]=a;
+        }
         else{
             char a=cadSinRep[l1-1]; char b= cadena[log++];
+            if ('A'<b && b<'Z') b +=' ';
             if(a!=b){
                 bool rep=false;
-                for(int i=0;i<l;i++){
+                for(int i=0;i<l;i++){ // Ciclo para validar con las letras ya add
                     if(b==cadSinRep[i]){
                         rep=true;
                     }
@@ -176,6 +188,22 @@ void delRepetido(char cadena[], int l){
 
 }
 
+//Ejercicio 8
+void separarLyN(char cadena[], char cadenaNew[], char numero[]){
+    int j=0; int k=0;
+    for (int i = 0; cadena[i] != '\0'; i++){
+        if (!isdigit(cadena[i])){
+            cadenaNew[j] = cadena[i];
+            j++;
+        }else{
+            numero[k++]=cadena[i];
+        }
+    }
+    numero[k]='\0';
+    cadenaNew[j]='\0';
+}
+
+//Ejercicio 9
 int sumaDen(int numero, int n){
     int div = 1; for(int i=0; i<n;i++) div*=10;
     int suma=0;
