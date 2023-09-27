@@ -29,14 +29,14 @@ int main()
             cin>>cantidad;
             combinaciones(cantidad);
             cout<<endl;
-            submenu();
+            con=submenu();
             break;
         }
         case 2:{
             ejecutando();
             cout<<"Arreglo de letras"<<endl;
             letrasAleartorias();
-            submenu();
+            con=submenu();
             break;
         }
         case 3:{
@@ -52,7 +52,7 @@ int main()
             if(comparacion==1) cout<<"Verdadero"<<endl;
             else cout<<"Falso"<<endl<<endl;
 
-            submenu();
+            con=submenu();
             break;
         }
         case 4:{
@@ -63,7 +63,7 @@ int main()
             cout<<"Ingrese la cadena a convertir: ";cin>>cadena;
 
             cout<<"El tipo de dato de "<<cadenaAentero(cadena)<<" es: "<<typeid(cadenaAentero(cadena)).name()<<endl;
-            submenu();
+            con=submenu();
             break;
         }
         case 5:{
@@ -79,7 +79,7 @@ int main()
             numAcad(numero,cadena,lInt);
             cout<<"El numero "<<numero<<" fue exitosamente convertido a cadena."<<endl;
 
-            submenu();
+            con=submenu();
             break;
         }
         case 6:{
@@ -94,7 +94,7 @@ int main()
             convertirAmay(cadena, cadenaOri);
 
             cout<<"Original: "<<cadenaOri<<" En mayuscula: "<<cadena<<endl<<endl;
-            submenu();
+            con=submenu();
             break;
         }
         case 7:{
@@ -107,7 +107,7 @@ int main()
             int longCadena = longitud(cadena);
             delRepetido(cadena,longCadena);
 
-            submenu();
+            con=submenu();
             break;
         }
         case 8:{
@@ -134,31 +134,42 @@ int main()
             cout<<"Ingrese el numero: ";cin>>numero;
             cout<<"Original: "<<numero<<endl;
             cout<<"Suma: "<<sumaDen(numero,n)<<endl;
-            submenu();
+            con=submenu();
             break;
         }
         case 10:{
+            char romano[10];
+            ejecutando();
 
+            cout<<"Romano a Arabigo"<<endl;
+            cout<<"Ingresa el numero en Romano (Mayuscula): "; cin>>romano;
+
+            cout<<"El numero ingresado fue: "<<romano<<endl;
+            cout<<"Que corresponde a: "<<romanoAarabigo(romano)<<endl;
+
+            con=submenu();
             break;
         }
         case 11:{
-            char sala[15][20];
 
-            //Relleno de los asientos
-            for(int i=0; i<15;i++){
-                for(int j=0; j<20; j++){
-                    sala[i][j]='-';
-                }
-            }
-
-            ejecutando();
             cout<<"Reserva de asiento en Cine"<<endl;
 
-            salaCine(sala);
+            salaCine();
 
             break;
         }
-        case 12:{}
+        case 12:{
+            int n;
+            ejecutando();
+
+            cout<<"Cuadrado Magico"<<endl;
+            cout<<"Ingresa el tamaño de la matriz cuadrada: ";cin>>n;
+
+            cuadroMagico(n);
+
+            con = submenu();
+            break;
+        }
         case 13:{
             int imagen[6][8]={
                 {0, 3, 4, 0, 0, 0, 6, 8},
@@ -173,9 +184,16 @@ int main()
 
             cout<<"Se encontraron "<<estrellas_encontradas<<" estrellas en la imagen."<<endl;
 
+            con=submenu();
             break;
         }
-        case 14:{}
+        case 14:{
+            ejecutando();
+            cout<<"Impresion matriz rotada"<<endl;
+            matrizRotada();
+            con=submenu();
+            break;
+        }
         case 15:{
             int rectUno[4]; int rectDos[4]; int rectInt[4]; int ciclos=0;
             ejecutando();
@@ -192,10 +210,34 @@ int main()
             }
 
         }
-        case 16:{}
-        case 17:{}
+        case 16:{
+            break;
+        }
+        case 17:{
+            int n;
+            ejecutando();
 
-        default:
+            cout<<"Numeros amigables"<<endl;
+            cout<<"Ingrese un numero: ";cin>>n;
+            numerosAmigables(n);
+            con=submenu();
+            break;
+        }
+        case 18:{
+            int n;
+            ejecutando();
+
+            cout<<"Permutaciones lexicograficas"<<endl;
+            cout<<"Ingresa un numero: ";cin>>n;
+
+            if (n >= 1 && n <= 3628800) { // Valida que n esté en el rango válido
+                char permutacion[11]; // 10 caracteres + 1 para el carácter nulo
+                lexicografica(n,permutacion);
+                cout << "La permutacion numero " << n << " es: " << permutacion << "." << endl;
+            } else {
+                cout << "El valor de n no esta en el rango permitido" << endl;
+            }
+        }default:
             if (opcion==0) con = 0;
             break;
         }

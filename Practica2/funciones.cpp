@@ -215,40 +215,215 @@ int sumaDen(int numero, int n){
     return suma;
 }
 
-void salaCine(char (*arreglo)[20]){
-    int asiento, opcion, filaInt; char fila;
-    char con = 'y';
-    while (con!='x') {
-        cout<<"Menu"<<endl<<"1. Deseas reservar"<<endl<<"2. Cancelar reserva "<<endl;cin>>opcion;
-        if(opcion==1){
-            cout<<"En la siguiente imagen vera la sala, recuerda que - es disponible y + reservada"<<endl;
-            printArreglo(arreglo,15,20);
-            //Se le pide fila y asiento a reservar
-            cout<<"Que fila seleccionas (A-O): ";cin>>fila;
-            cout<<"Que asiento seleccionas (1-20): ";cin>>asiento;
-            //conversion de fila letra a numero
-            filaInt = 15-('O'-fila)-1;
-            if(arreglo[filaInt][asiento-1]=='-') arreglo[filaInt][asiento-1]='+';cout<<"Su reservacion fue exitosa"<<endl;
+//Ejercicio 10
+int romanoAarabigo(char cadena[]){
+    int l=longitud(cadena);
+    int valores[]={1000,500,100,50,10,5,1};
+    char simbolos[]={'M','D','C','L','X','V','I'};
+    int resultado=0; int prevalor=0;
 
-            cout<<"Deseas volver al menu anterior o salir del programa (y-menu anterior) o (x-salir): ";cin>>con;
-        }else if(opcion==2){
-
-            printArreglo(arreglo,15,20);
-            cout<<"Cancelacion de reserva"<<endl;
-            cout<<"Que fila seleccionas (A-O): ";cin>>fila;
-            cout<<"Que asiento seleccionas (1-20): ";cin>>asiento;
-            filaInt = 15-('O'-fila)-1;
-            if(arreglo[filaInt][asiento-1]=='+') {
-                arreglo[filaInt][asiento-1]='-'; cout<<"Cancelacion exitosa"<<endl;
+    for(int i=l-1;i>=0;i--){
+        int valor = 0;
+        for (int j = 0; j < 7; ++j) {
+            if(cadena[i]==simbolos[j]){
+                valor = valores[j];
+                break;
             }
-            else cout<<"Asiento sin reservar, cancelacion invalida"<<endl;
-
-            cout<<"Deseas volver al menu anterior o salir del programa (y-menu anterior) o (x-salir): ";cin>>con;
         }
 
+        if(valor==0){
+            cout<<"Numero romano invalido"<<endl;
+            return 0;
+        }else if(valor<prevalor){
+            resultado-=valor;
+        }else if(valor>=prevalor){
+            resultado+=valor;
+        }
+        prevalor = valor;
+    }
+    return resultado;
+}
+
+//Ejercicio 11
+void salaCine(){
+    char arreglo[15][20]; // Matriz de asientos
+
+
+    // Inicializar la matriz de asientos con asientos disponibles ('-')
+    for (int i = 0; i < 15; i++) {
+        for (int j = 0; j < 20; j++) {
+            arreglo[i][j] = '-';
+        }
+    }
+
+    int asiento, opcion, filaInt; char fila;
+
+    char con = 'y';
+
+    while (con!='x') {
+        cout<<"Menu"<<endl<<"1. Deseas reservar"<<endl<<"2. Cancelar reserva "<<endl;
+        cout<<"Selecciona la opcion: ";cin>>opcion;
+
+        if(opcion==1){
+            cout<<endl<<"Sala"<<endl;
+            printArreglo(arreglo,15,20);
+
+            //Se le pide fila y asiento a reservar
+            cout<<"Que fila seleccionas (A-O): ";cin>>fila;
+
+            if (fila < 'A' || fila > 'O') {
+                cout << "Fila no valida. Debe ser una letra entre A y O." << endl;
+                continue; // Volver al inicio del bucle
+            }
+
+            cout<<"Que asiento seleccionas (1-20): ";cin>>asiento;
+
+            if (asiento < 1 || asiento > 20) {
+                cout << "Asiento no valido. Debe estar entre 1 y 20." << endl;
+                continue; // Volver al inicio del bucle
+            }
+
+            //conversion de fila letra a numero
+            filaInt = 15-('O'-fila)-1;
+
+            if(arreglo[filaInt][asiento-1]=='-') {
+                arreglo[filaInt][asiento-1]='+';
+                cout<<"Su reservacion fue exitosa"<<endl;
+            }else{
+                cout<<"El asiento ya esta reservado"<<endl;
+            }
+        }else if(opcion==2){
+            printArreglo(arreglo,15,20);
+
+            cout<<"Cancelacion de reserva"<<endl;
+
+            cout<<"Que fila seleccionas (A-O): ";cin>>fila;
+
+            if (fila < 'A' || fila > 'O') {
+                cout << "Fila no válida. Debe ser una letra entre A y O." << endl;
+                continue; // Volver al inicio del bucle
+            }
+
+            cout<<"Que asiento seleccionas (1-20): ";cin>>asiento;
+
+            if (asiento < 1 || asiento > 20) {
+                cout << "Asiento no válido. Debe estar entre 1 y 20." << endl;
+                continue; // Volver al inicio del bucle
+            }
+
+            filaInt = 15-('O'-fila)-1;
+
+            if(arreglo[filaInt][asiento-1]=='+') {
+                arreglo[filaInt][asiento-1]='-';
+                cout<<"Cancelacion exitosa"<<endl;
+            }
+            else cout<<"Asiento sin reservar, cancelacion invalida"<<endl;
+        }
+        cout<<"Deseas volver al menu anterior o salir del programa (y-menu anterior) o (x-salir): ";cin>>con;
+        if(con=='Y') con='y';
+        else if(con=='X') con='x';
     }
 }
 
+//Ejercicio 12
+void cuadroMagico(int n){
+    int matriz[n][n];
+    cout<<"Ingrese los datos de la matriz"<<endl;
+    for(int i=0;i<n;i++){
+        for (int j=0; j<n;j++){
+            int valor=0;
+            bool repetido=false;
+
+            do{
+                cout<<"El dato de la posicion "<<i<<","<<j<<": ";
+                cin>>valor;
+                for (int x = 0; x < n; ++x) {
+                    for (int y = 0; y < n; ++y) {
+                        if(valor==matriz[x][y]){
+                            cout<<"El valor ya ha sido ingresado";
+                            break;
+                        }
+                    }
+                    if(repetido) break;
+                }
+                if(!repetido)
+                    matriz[i][j]=valor;
+            }while(repetido);
+        }
+    }
+
+    cout<<"Matriz ingresada"<<endl;
+    for (int f = 0; f < n; ++f) {
+        for (int c = 0; c < n; ++c) {
+            cout<<matriz[f][c]<<" ";
+        }
+        cout<<endl;
+    }
+
+    //Validaciones para saber si es cuadro magico
+    int suma_fila=0;
+    for (int suma = 0; suma < n; ++suma) {
+        suma_fila+=matriz[0][suma];
+    }
+
+    bool cuadroMagico=true;
+
+    for (int i = 0; i < n; ++i) {
+        int sumaFilaActual=0;
+        for (int j = 0; j < n; ++j) {
+            sumaFilaActual+=matriz[i][j];
+        }
+        if(sumaFilaActual!=suma_fila){
+            cuadroMagico = false;
+            break;
+        }
+    }
+
+    int suma_columna=0;
+    for (int suma = 0; suma < n; ++suma) {
+        suma_columna+=matriz[0][suma];
+    }
+
+    for (int j = 0; j < n; ++j) {
+        int sumaColumnaActual=0;
+        for (int i = 0; i < n; ++i) {
+            sumaColumnaActual+=matriz[i][j];
+        }
+        if(sumaColumnaActual!=suma_columna){
+            cuadroMagico = false;
+            break;
+        }
+    }
+
+    // Verificar la suma de la diagonal principal
+    int sumaDiagonalPrincipal = 0;
+    for (int i = 0; i < n; i++) {
+        sumaDiagonalPrincipal += matriz[i][i];
+    }
+    if (sumaDiagonalPrincipal != suma_fila) {
+        cuadroMagico = false;
+    }
+
+    // Verificar la suma de la diagonal secundaria
+    int sumaDiagonalSecundaria = 0;
+    for (int i = 0; i < n; i++) {
+        sumaDiagonalSecundaria += matriz[i][n - 1 - i];
+    }
+    if (sumaDiagonalSecundaria != suma_fila) {
+        cuadroMagico = false;
+    }
+
+    if (cuadroMagico) {
+        cout << "La matriz es un cuadrado magico." << endl;
+    } else {
+        cout << "La matriz no es un cuadrado magico." << endl;
+    }
+
+
+
+}
+
+//Ejericio 13
 int estrellas(int (*imagen)[8], const int fila, const int columna){
     int starsFound=0;
     for (int i = 1; i < fila-1; ++i) {
@@ -261,20 +436,103 @@ int estrellas(int (*imagen)[8], const int fila, const int columna){
     return starsFound;
 }
 
-void interseccionTr(int arreglo[4], int arreglo1[4], int (*arregloI)[4]){
-
-}
-
-void quitar(char cadena[],char newCadena[]){
-
-    int j = 0;
-    for (int i = 0; cadena[i] != '\0'; i++){
-        if (!isdigit(cadena[i])){
-            newCadena[j] = cadena[i];
-            j++;
+//Ejercicio 14
+void matrizRotada(){
+    int matriz[5][5];
+    int valor=1;
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            matriz[i][j]=valor;
+            valor+=1;
         }
     }
-    cout << newCadena << endl;
+    cout<<endl<<"Matriz normal"<<endl;
+    //Impresion normal
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            cout<<matriz[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
 
+    cout<<endl<<"Matriz rotada 90 grados"<<endl;
+    //Impresion 90 grados
+    for (int  j= 0; j<5; ++j) {
+        for (int i = 4; i >= 0; --i) {
+            cout<<matriz[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+    cout << "Matriz rotada 180 grados:" << endl;
+    for (int i = 4; i >= 0; i--) {
+        for (int j = 4; j >= 0; j--) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout<<endl;
+    // Imprimir matriz rotada 270 grados
+    cout << "Matriz rotada 270 grados:" << endl;
+    for (int j = 4; j>=0; j--) {
+        for (int i = 0; i < 5; i++) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout<<endl;
+}
 
+//Ejercicio 17
+int sumaDiv(int a){
+    int sumaA=1;
+    for(int i=2; i<a; i++){
+        if(a%i==0){
+            sumaA+=i;
+        }
+    }
+    return sumaA;
+}
+
+void numerosAmigables(int a){
+    int suma=0;
+    //Verificacion
+    for (int i = 1; i <= a; ++i) {
+        int b = sumaDiv(i);
+        // b<i ->> no contemos los pares de números amigables más de una vez
+        if(b>i && sumaDiv(b)==i){
+            suma+= i+b;
+        }
+    }
+    cout<<"El resultado de la suma es: "<<suma<<endl;
+}
+
+//Ejercicio 18
+int factorial(int n){
+    int f = 1;
+    for (int i = 2; i <= n; i++) {
+        f *= i;
+    }
+    return f;
+}
+void lexicografica(int n, char cad[]){
+    int numeros[10];
+    for (int i = 0; i < 10; i++) {
+        numeros[i] = i + '0'; // Inicializa con caracteres
+    }
+    n--; // Restamos 1 para ajustar al índice base 0
+
+    for (int i = 9; i >= 0; i--) {
+        int f = factorial(i);
+        int posicion = n / f;
+        n %= f;
+        cad[9 - i] = numeros[posicion]; // Guarda el carácter en la permutación
+
+        // Eliminamos el número utilizado
+        for (int j = posicion; j < 9; j++) {
+            numeros[j] = numeros[j + 1];
+        }
+    }
+
+    cad[10] = '\0';
 }
