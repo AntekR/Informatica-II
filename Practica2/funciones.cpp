@@ -24,6 +24,7 @@ void menuEjercicios(){
     cout<<"15. Interseccion de rectangulos"<<endl;
     cout<<"16. Caminos posibles"<<endl;
     cout<<"17. Numeros amigables"<<endl;
+    cout<<"18. Permutaciones lexicograficas"<<endl;
     cout<<"0. Salir"<<endl;
 
 }
@@ -135,6 +136,7 @@ int cadenaAentero(char cadena[]){
 
 //Ejercicio 5
 void numAcad(int numero, char cadena[], int l){
+
     if(numero<0) l+=1;
     if(numero==0) cadena[0]='0';
 
@@ -142,6 +144,8 @@ void numAcad(int numero, char cadena[], int l){
         cadena[i]= '0'+numero%10;
         numero/=10;
     }
+    cadena[l]='\0';
+
 };
 
 //Ejercicio 6

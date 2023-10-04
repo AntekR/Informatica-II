@@ -9,7 +9,7 @@ int main()
 {
     //declaracion de variables
     int con = 1; int opcion = 0;
-    cout<<"PRACTICA 2"<<endl;
+    cout<<" PRACTICA 2"<<endl;
 
     //impresion de menu
 
@@ -75,9 +75,9 @@ int main()
 
             // recorro el entero para saber cuantos digitos tiene
             int lInt = longInt(numero); if(numero<0) lInt+=1; // Si el numero es negativo, sumo un digito mas para add el menos.
-            char cadena[lInt];
+            char cadena[lInt]={0};
             numAcad(numero,cadena,lInt);
-            cout<<"El numero "<<numero<<" fue exitosamente convertido a cadena."<<endl;
+            cout<<"El numero "<<cadena<<" fue exitosamente convertido a cadena."<<endl;
 
             con=submenu();
             break;
