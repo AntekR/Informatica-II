@@ -6,9 +6,9 @@ using namespace std;
 
 #endif // DECL_FUN_H
 
-string binario(char a);
-void asciiAbinario(string name);
-void metodo2(string salida, int semilla);
-void metodo2DBinario(string entrada,int semilla);
-void metodo2Desencriptar(string entrada,string salida,int semilla);
-char binarioAascii(string temp);
+string valueBinary(char a);
+void deAscii_Abinario(string name);
+void codificarM2(string salida, int semilla);
+void decodificarBinario(string entrada,int semilla);
+void desencriptarM2(string entrada,string salida,int semilla);
+char dBinario_aAascii(string temp);
