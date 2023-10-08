@@ -38,7 +38,83 @@ void deAscii_Abinario(string name){
 
 // ************************METODO 1********************************
 
+void ceros_unos(string bloque, int conteo[2]){
+    conteo[0]=0; conteo[1]=0;
+    for(int i=0; i < bloque.size();i++){
+        if(bloque[i]=='0'){
+            conteo[0]+=1;
+        }else conteo[1]+=1;
+    }
+}
 
+string invertirDigitos(string bloque1){
+    string bloque2;
+    for(int i=0; i < bloque1.size();i++){
+        if(bloque1[i]=='0'){
+            bloque2+='1';
+        }else{
+            bloque2+='0';
+        }
+    }
+    return bloque2;
+}
+
+string invertirC2Digitos(string bloque1){
+    string bloque2;
+    for(int i=1; i < bloque1.size();i+=2){
+        if(bloque1[i]=='0'){
+            bloque2+='1';
+        }else{
+            bloque2+='0';
+        }
+    }
+    return bloque2;
+}
+
+string invertirC3Digitos(string bloque1){
+    string bloque2;
+    for(int i=2; i < bloque1.size();i+=3){
+        if(bloque1[i]=='0'){
+            bloque2+='1';
+        }else{
+            bloque2+='0';
+        }
+    }
+    return bloque2;
+}
+
+void codificarM1(string salida, int semilla){
+    int p=0; int b=0; int conteo[]={0,0};
+    string bloque1;
+    string bloque2;
+    ifstream fileBinary("Binario.txt");
+    ofstream fileCod(salida);
+    while(fileBinary.good()){
+        char temp = fileBinary.get(); //Lectura de caracter a caracter
+        bloque1+=temp;
+        p++;
+        if(p==semilla){
+            if(b==0){
+                bloque2=invertirDigitos(bloque1);
+                fileCod<<bloque2;
+                b++;
+            }else if(b!=0 && conteo[0]==conteo[1]){
+                bloque2=invertirDigitos(bloque1);
+                fileCod<<bloque2;
+            }else if(b!=0 && conteo[0]>conteo[1]){
+                bloque2=invertirC2Digitos(bloque1);
+                fileCod<<bloque2;
+            }else if(b!=0 && conteo[0]<conteo[1]){
+                bloque2=invertirC3Digitos(bloque1);
+                fileCod<<bloque2;
+            }
+            ceros_unos(bloque1,conteo);
+            p=0; bloque1.erase(); bloque2.erase();
+        }
+    }
+
+    cout<<"Codificacion Exitosa"<<endl;
+}
 
 
 // ************************METODO 2********************************

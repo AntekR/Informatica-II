@@ -41,7 +41,7 @@ int main()
             deAscii_Abinario(entrada);
 
             if(metodo==1){
-                break;
+                codificarM1(salida,semilla);
             }else if(metodo==2){
                 codificarM2(salida,semilla);
             }else{
